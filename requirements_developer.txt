@@ -1,0 +1,3 @@
+# We need black, which in turn needs Python 3.6+
+black
+tomli ; python_version < "3.11"
