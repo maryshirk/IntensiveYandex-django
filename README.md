@@ -1,6 +1,6 @@
 # IntensiveYandex-django
 
-![example workflow](https://github.com/maryshirk/IntensiveYandex-django/blob/main/.github/workflows/python-package.yml/badge.svg)
+![example event parameter](https://github.com/maryshirk/IntensiveYandex-django/blob/main/.github/workflows/python-package.yml/badge.svg?event=push)
 
 ## Инструкция по запуску проекта в dev-режиме
 
