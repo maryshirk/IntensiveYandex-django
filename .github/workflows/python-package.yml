@@ -36,4 +36,4 @@ jobs:
     - uses: psf/black@stable
       with:
         options: "--check --verbose"
-        src: "./src"
+        src: "./folder_of_files_to_reformat/"
