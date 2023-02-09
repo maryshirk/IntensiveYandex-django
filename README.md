@@ -1,5 +1,7 @@
 # IntensiveYandex-django
 
+![example workflow](https://github.com/maryshirk/IntensiveYandex-django/blob/main/.github/workflows/python-package.yml/badge.svg)
+
 ## Инструкция по запуску проекта в dev-режиме
 
 ### 1. Клонирование
