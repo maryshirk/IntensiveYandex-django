@@ -2,11 +2,10 @@ from datetime import datetime
 
 
 class DateConverter:
-    regex = r"[0-9]{4}-[0-9]{2}-[0-9]{2}"
-    format = "%Y-%m-%d"
+    regex = "[0-9]{4}"
 
     def to_python(self, value):
-        return datetime.strptime(value, self.format)
+        return int(value)
 
     def to_url(self, value):
-        return value.strftime(self.format)
+        return "%04d" % value
