@@ -39,5 +39,6 @@ jobs:
         options: "--check --verbose"
     - name: Run Tests
       run: |
+        cd lyceum
         python manage.py test
 
