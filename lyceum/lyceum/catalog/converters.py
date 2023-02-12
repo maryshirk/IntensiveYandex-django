@@ -5,4 +5,4 @@ class DateConverter:
         return str(value)
 
     def to_url(self, value):
-        return value
+        return str(value)
