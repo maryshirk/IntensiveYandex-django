@@ -95,6 +95,10 @@ class StaticUrlTests(TestCase):
         response = Client().get("/catalog/yyyymmdd/4")
         self.assertEqual(response.status_code, 404)
 
-    def test_catalog_convert_double_endpoint(self):
+    def test_catalog_convert_data_double_endpoint(self):
         response = Client().get("/catalog/20220212/4.3")
+        self.assertEqual(response.status_code, 404)
+
+    def test_catalog_convert_double_endpoint(self):
+        response = Client().get("/catalog/2022/4.3")
         self.assertEqual(response.status_code, 404)

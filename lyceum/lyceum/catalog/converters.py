@@ -1,6 +1,3 @@
-from datetime import datetime
-
-
 class DateConverter:
     regex = "[0-9]{4}"
 
