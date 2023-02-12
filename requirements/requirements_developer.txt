@@ -1,3 +1,2 @@
-# We need black, which in turn needs Python 3.6+
-black
-tomli ; python_version < "3.11"
+black==23.1.0
+django-debug-toolbar
