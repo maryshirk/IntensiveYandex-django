@@ -9,4 +9,4 @@ class StaticUrlTests(TestCase):
 
     def test_coffee_content(self):
         response = Client().get("/coffee/")
-        self.assertEqual(response.content, b"<body>Я чайник</body>")
+        self.assertEqual(response.content, bytes"<body>Я чайник</body>")
