@@ -8,6 +8,7 @@ class StaticUrlTests(TestCase):
         response = Client().get("/catalog/")
         self.assertEqual(response.status_code, 200)
     # /catalog/целое положительное число
+
     def test_catalog_int_endpoint(self):
         response = Client().get("/catalog/1/")
         self.assertEqual(response.status_code, 200)
@@ -15,7 +16,7 @@ class StaticUrlTests(TestCase):
     def test_catalog_int2_endpoint(self):
         response = Client().get("/catalog/13/")
         self.assertEqual(response.status_code, 200)
-    
+
     def test_catalog_int3_endpoint(self):
         response = Client().get("/catalog/134/")
         self.assertEqual(response.status_code, 200)
