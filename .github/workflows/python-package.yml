@@ -37,3 +37,7 @@ jobs:
     - uses: psf/black@stable
       with:
         options: "--check --verbose"
+    - name: Run Tests
+      run: |
+        python manage.py test
+
