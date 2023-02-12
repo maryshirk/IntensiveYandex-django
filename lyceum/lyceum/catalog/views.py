@@ -9,3 +9,7 @@ def item_list(request):
 
 def item_detail(request, pk):
     return HttpResponse("<body>Подробно элемент</body>")
+
+
+def item_data_detail(request, dt, pk):
+    return HttpResponse("<body>Подробно элемент</body>")
