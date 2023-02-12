@@ -64,41 +64,41 @@ class StaticUrlTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_endpoint(self):
-        response = Client().get("/catalog/2022/3")
+        response = Client().get("/catalog/2022/3/")
         self.assertEqual(response.status_code, 200)
 
     def test_catalog_convert_date_endpoint(self):
-        response = Client().get("/catalog/20224/3")
+        response = Client().get("/catalog/20224/3/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_date_negative_endpoint(self):
-        response = Client().get("/catalog/20224/-4")
+        response = Client().get("/catalog/20224/-4/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_negative_endpoint(self):
-        response = Client().get("/catalog/2022/-4")
+        response = Client().get("/catalog/2022/-4/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_date_str_endpoint(self):
-        response = Client().get("/catalog/dgfr/4")
+        response = Client().get("/catalog/dgfr/4/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_str_endpoint(self):
-        response = Client().get("/catalog/2022/sghgd")
+        response = Client().get("/catalog/2022/sghgd/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_str_str_endpoint(self):
-        response = Client().get("/catalog/dgfr/fhth")
+        response = Client().get("/catalog/dgfr/fhth/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_formatdate_endpoint(self):
-        response = Client().get("/catalog/yyyymmdd/4")
+        response = Client().get("/catalog/yyyymmdd/4/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_data_double_endpoint(self):
-        response = Client().get("/catalog/20220212/4.3")
+        response = Client().get("/catalog/20220212/4.3/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_double_endpoint(self):
-        response = Client().get("/catalog/2022/4.3")
+        response = Client().get("/catalog/2022/4.3/")
         self.assertEqual(response.status_code, 404)
