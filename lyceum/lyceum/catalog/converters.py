@@ -5,4 +5,4 @@ class DateConverter:
         return str(value)
 
     def to_url(self, value):
-        return str(value)
+        return "%04d-%02d-%02d" % value
