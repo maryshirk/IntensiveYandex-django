@@ -66,7 +66,7 @@ class StaticUrlTests(TestCase):
         response = Client().get("/catalog/re/fgpsdj/")
         self.assertEqual(response.status_code, 404)
     # /catalog/yyyy-mm-dd/целое положительное число/
-    
+
     def test_catalog_convert_endpoint(self):
         response = Client().get("/catalog/2022-02-12/3")
         self.assertEqual(response.status_code, 200)
