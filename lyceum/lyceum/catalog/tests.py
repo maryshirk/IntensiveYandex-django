@@ -7,9 +7,7 @@ class StaticUrlTests(TestCase):
     def test_catalog_endpoint(self):
         response = Client().get("/catalog/")
         self.assertEqual(response.status_code, 200)
-
-    
-    # /catalog/целое положительное число 
+    # /catalog/целое положительное число
     def test_catalog_int_endpoint(self):
         response = Client().get("/catalog/1/")
         self.assertEqual(response.status_code, 200)
@@ -37,8 +35,7 @@ class StaticUrlTests(TestCase):
     def test_catalog_str_endpoint(self):
         response = Client().get("/catalog/fhgdg/")
         self.assertEqual(response.status_code, 404)
-
-    # /catalog/re/целое положительное число 
+    # /catalog/re/целое положительное число
     def test_catalog_re_int_endpoint(self):
         response = Client().get("/catalog/re/1/")
         self.assertEqual(response.status_code, 200)
@@ -66,7 +63,6 @@ class StaticUrlTests(TestCase):
     def test_catalog_re_str_endpoint(self):
         response = Client().get("/catalog/re/fgpsdj/")
         self.assertEqual(response.status_code, 404)
-
     # /catalog/yyyy-mm-dd/целое положительное число/
     def test_catalog_convert_endpoint(self):
         response = Client().get("/catalog/2022-02-12/3")
