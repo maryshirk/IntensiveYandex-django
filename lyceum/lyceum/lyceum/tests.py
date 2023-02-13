@@ -1,7 +1,9 @@
 from django.test import Client, TestCase
 
-from lyceum.settings import REVERSE_FLAG as reverse_flag
+from lyceum.settings import REVERSE_FLAG
 
+
+reverse_flag = REVERSE_FLAG
 
 # Create your tests here.
 class StaticUrlTests(TestCase):
