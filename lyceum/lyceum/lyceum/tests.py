@@ -1,12 +1,12 @@
 from django.test import Client, TestCase
 
-from lyceum.settings import REVERSE_FLAG
+from lyceum.settings import REVERSE_FLAG as reverse_flag
 
 
 # Create your tests here.
 class StaticUrlTests(TestCase):
     def test_middleware_coffee(self):
-        if REVERSE_FLAG is True:
+        if reverse_flag is True:
             n = 0
             for i in range(10):
                 response = Client().get("/coffee/")
@@ -26,7 +26,7 @@ class StaticUrlTests(TestCase):
             self.assertEqual(n, 0)
 
     def test_middleware_catalog(self):
-        if REVERSE_FLAG is True:
+        if reverse_flag is True:
             n = 0
             for i in range(10):
                 response = Client().get("/catalog/3/")
@@ -46,8 +46,7 @@ class StaticUrlTests(TestCase):
             self.assertEqual(n, 0)
 
     def test_middleware_about(self):
-        if REVERSE_FLAG is True:
-            REVERSE_FLAG = False
+        if reverse_flag is True:
             n = 0
             for i in range(10):
                 response = Client().get("/about/")
@@ -55,34 +54,21 @@ class StaticUrlTests(TestCase):
                 s = "<body>" + r[6:-7][::-1] + "</body>"
                 if r != s:
                     n += 1
-            REVERSE_FLAG = True
-            self.assertEqual(n, 0)
-        else:
-            REVERSE_FLAG = True
-            n = 0
-            for i in range(10):
-                response = Client().get("/about/")
-                r = response.content.decode()
-                s = "<body>" + r[6:-7][::-1] + "</body>"
-                if r != s:
-                    n += 1
-            REVERSE_FLAG = False
             self.assertEqual(n, 1)
+        else:
+            n = 0
+            for i in range(10):
+                response = Client().get("/about/")
+                r = response.content.decode()
+                s = "<body>" + r[6:-7][::-1] + "</body>"
+                if r != s:
+                    n += 1
+            self.assertEqual(n, 0)
 
     def test_middleware(self):
-        if REVERSE_FLAG is True:
-            n = 0
-            for i in range(10):
-                response = Client().get("/catalog/fdhdhd/")
-                if response.status_code == 404:
-                    n += 1
-            self.assertEqual(n, 10)
-        else:
-            REVERSE_FLAG = True
-            n = 0
-            for i in range(10):
-                response = Client().get("/catalog/rturur/")
-                if response.status_code == 404:
-                    n += 1
-            REVERSE_FLAG = False
-            self.assertEqual(n, 10)
+        n = 0
+        for i in range(10):
+            response = Client().get("/catalog/dgrgfd")
+            if response.status_code == 404:
+                n += 1
+        self.assertEqual(n, 10)
