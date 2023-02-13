@@ -1,4 +1,4 @@
-class DateConverter:
+class Converter:
     regex = "[1-9]{4}"
 
     def to_python(self, value):

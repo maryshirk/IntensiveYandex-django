@@ -2,7 +2,7 @@ from django.urls import path, re_path, register_converter
 
 from . import converters, views
 
-register_converter(converters.DateConverter, "date")
+register_converter(converters.Converter, "date")
 
 urlpatterns = [
     path("", views.item_list),

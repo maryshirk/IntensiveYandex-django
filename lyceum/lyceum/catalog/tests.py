@@ -68,7 +68,7 @@ class StaticUrlTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_endpoint(self):
-        response = Client().get("/catalog/2022/3/")
+        response = Client().get("/catalog/2222/3/")
         self.assertEqual(response.status_code, 200)
 
     def test_catalog_convert_date_endpoint(self):
@@ -76,11 +76,11 @@ class StaticUrlTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_date_negative_endpoint(self):
-        response = Client().get("/catalog/20224/-4/")
+        response = Client().get("/catalog/21224/-4/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_negative_endpoint(self):
-        response = Client().get("/catalog/2022/-4/")
+        response = Client().get("/catalog/2222/-4/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_date_str_endpoint(self):
@@ -88,7 +88,7 @@ class StaticUrlTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_str_endpoint(self):
-        response = Client().get("/catalog/2022/sghgd/")
+        response = Client().get("/catalog/2122/sghgd/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_str_str_endpoint(self):
@@ -100,7 +100,7 @@ class StaticUrlTests(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_data_double_endpoint(self):
-        response = Client().get("/catalog/20220212/4.3/")
+        response = Client().get("/catalog/21221212/4.3/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_data_zero_endpoint(self):
