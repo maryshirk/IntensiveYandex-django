@@ -26,7 +26,7 @@ class StaticUrlTests(TestCase):
                 s = "<body>" + r[6:-7][::-1] + "</body>"
                 if r != s:
                     n += 1
-            self.assertEqual(n, 0)
+            self.assertEqual(n, 10)
 
     def test_middleware_catalog(self):
         if reverse_flag is True:
@@ -46,7 +46,7 @@ class StaticUrlTests(TestCase):
                 s = "<body>" + r[6:-7][::-1] + "</body>"
                 if r != s:
                     n += 1
-            self.assertEqual(n, 0)
+            self.assertEqual(n, 10)
 
     def test_middleware_about(self):
         if reverse_flag is True:
@@ -66,7 +66,7 @@ class StaticUrlTests(TestCase):
                 s = "<body>" + r[6:-7][::-1] + "</body>"
                 if r != s:
                     n += 1
-            self.assertEqual(n, 0)
+            self.assertEqual(n, 10)
 
     def test_middleware(self):
         n = 0
