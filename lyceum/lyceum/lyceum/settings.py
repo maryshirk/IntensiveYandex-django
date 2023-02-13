@@ -30,6 +30,7 @@ DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(", ")
 
+REVERSE = os.environ.get("REVERSE") == "True"
 
 # Application definition
 
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "lyceum.middleware.SimpleMiddleware",
 ]
 
 INTERNAL_IPS = [
