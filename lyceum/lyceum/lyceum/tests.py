@@ -5,6 +5,8 @@ from lyceum.settings import REVERSE_FLAG
 
 reverse_flag = REVERSE_FLAG
 # Create your tests here.
+
+
 class StaticUrlTests(TestCase):
     def test_middleware_coffee(self):
         if reverse_flag is True:
