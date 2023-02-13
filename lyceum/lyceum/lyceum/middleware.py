@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+
 from lyceum.settings import REVERSE
 
 
@@ -14,7 +15,7 @@ class SimpleMiddleware:
         if self.c % 10 == 0:
             r = response.content.decode()
             if REVERSE:
-                if (response.status_code == 200 or response.status_code == 418):
+                if response.status_code == 200 or response.status_code == 418:
                     s = "<body>" + r[6:-7][::-1] + "</body>"
                     response = HttpResponse(s, status=200)
         return response
