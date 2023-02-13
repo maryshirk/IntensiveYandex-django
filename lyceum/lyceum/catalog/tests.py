@@ -55,6 +55,10 @@ class StaticUrlTests(TestCase):
         response = Client().get("/catalog/re/1,34/")
         self.assertEqual(response.status_code, 404)
 
+    def test_catalog_re_zero_endpoint(self):
+        response = Client().get("/catalog/re/0/")
+        self.assertEqual(response.status_code, 404)
+
     def test_catalog_re_negative_endpoint(self):
         response = Client().get("/catalog/re/-3/")
         self.assertEqual(response.status_code, 404)
@@ -97,6 +101,10 @@ class StaticUrlTests(TestCase):
 
     def test_catalog_convert_data_double_endpoint(self):
         response = Client().get("/catalog/20220212/4.3/")
+        self.assertEqual(response.status_code, 404)
+
+    def test_catalog_convert_data_zero_endpoint(self):
+        response = Client().get("/catalog/1111/0/")
         self.assertEqual(response.status_code, 404)
 
     def test_catalog_convert_double_endpoint(self):

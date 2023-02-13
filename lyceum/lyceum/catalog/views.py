@@ -12,4 +12,6 @@ def item_detail(request, pk):
 
 
 def item_data_detail(request, dt, pk):
+    if pk <= 0:
+        return HttpResponse(status=404)
     return HttpResponse("<body>Подробно элемент</body>")
