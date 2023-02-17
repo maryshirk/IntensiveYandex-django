@@ -1,6 +1,5 @@
-from django.http import HttpResponse
-
 from django.conf import settings
+from django.http import HttpResponse
 
 
 REVERSE_FLAG = settings.REVERSE_FLAG
@@ -35,15 +34,15 @@ class SimpleMiddleware:
         f = f[6:-7]
         f = f.split(" ")
         new_f = ""
-        ru_Alp = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-        eng_Alp = "abcdefghijklmnopqrstuvwxyz"
+        ru_alp = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+        eng_alp = "abcdefghijklmnopqrstuvwxyz"
         for word in f:
             cut_str = ""
             for sign in word:
-                if sign.lower() in eng_Alp or sign.isdigit():
+                if sign.lower() in eng_alp or sign.isdigit():
                     cut_str = word
                     break
-                elif sign.lower() in ru_Alp:
+                elif sign.lower() in ru_alp:
                     cut_str = sign + cut_str
                 else:
                     cut_str += sign
