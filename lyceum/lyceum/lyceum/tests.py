@@ -3,7 +3,7 @@ from django.test import Client, TestCase
 
 
 class StaticUrlTests(TestCase):
-    def test_middleware(self):
+    def test_middleware_positive(self):
         if settings.REVERSE_FLAG is True:
             settings.REVERSE_FLAG = False
             client_self = Client()
@@ -14,7 +14,9 @@ class StaticUrlTests(TestCase):
                 if response.content.decode() == "Я кинйач":
                     n += 1
             self.assertEqual(n, 0)
-        else:
+
+    def test_middleware_negative(self):
+        if settings.REVERSE_FLAG is False:
             settings.REVERSE_FLAG = True
             client_self = Client()
             n = 0
