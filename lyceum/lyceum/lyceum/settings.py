@@ -30,7 +30,7 @@ DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(", ")
 
-REVERSE_FLAG = os.environ.get("REVERSE") == "True"
+REVERSE_FLAG = os.environ.get("REVERSE_FLAG") == "True"
 
 # Application definition
 
