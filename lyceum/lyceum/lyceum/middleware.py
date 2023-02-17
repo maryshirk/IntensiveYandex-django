@@ -15,7 +15,10 @@ class SimpleMiddleware:
         if self.predicate():
             r = response.content.decode()
             if REVERSE_FLAG:
-                if response.status_code == 200 or response.status_code == 418:
+                if response.status_code == 200:
+                    s = self.russian_reverse(r)
+                    response = HttpResponse(s, status=200)
+                if response.status_code == 418:
                     s = self.russian_reverse(r)
                     response = HttpResponse(s, status=200)
         return response

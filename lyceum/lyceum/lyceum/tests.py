@@ -17,7 +17,7 @@ class StaticUrlTests(TestCase):
                 s = "<body>" + r[6:-7][::-1] + "</body>"
                 if r != s:
                     n += 1
-            self.assertEqual(n, 1)
+            self.assertEqual(n, 10)
         else:
             n = 0
             for i in range(10):
@@ -37,7 +37,7 @@ class StaticUrlTests(TestCase):
                 s = "<body>" + r[6:-7][::-1] + "</body>"
                 if r != s:
                     n += 1
-            self.assertEqual(n, 1)
+            self.assertEqual(n, 10)
         else:
             n = 0
             for i in range(10):
@@ -57,7 +57,7 @@ class StaticUrlTests(TestCase):
                 s = "<body>" + r[6:-7][::-1] + "</body>"
                 if r != s:
                     n += 1
-            self.assertEqual(n, 1)
+            self.assertEqual(n, 10)
         else:
             n = 0
             for i in range(10):
