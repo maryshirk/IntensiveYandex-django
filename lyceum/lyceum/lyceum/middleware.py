@@ -20,7 +20,7 @@ class SimpleMiddleware:
                     response = HttpResponse(s, status=200)
                 if response.status_code == 418:
                     s = self.russian_reverse(r)
-                    response = HttpResponse(s, status=200)
+                    response = HttpResponse(s, status=418)
         return response
 
     def predicate(self):
