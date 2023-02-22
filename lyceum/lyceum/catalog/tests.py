@@ -1,3 +1,5 @@
+from catalog.models import Category, Item, Tag
+from django.core.exceptions import ValidationError
 from django.test import Client, TestCase
 
 
@@ -110,3 +112,67 @@ class StaticUrlTests(TestCase):
     def test_catalog_convert_double_endpoint(self):
         response = Client().get("/catalog/2022/4.3/")
         self.assertEqual(response.status_code, 404)
+
+
+class ModelTests(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.category = Category.objects.create(
+            name="Тестовая категория",
+            slug="test-category-slug",
+        )
+        cls.tag = Tag.objects.create(
+            name="Тестовый тег",
+            slug="test-tag-slug",
+        )
+
+    def test_without_needed_words(self):
+        item_count = Item.objects.count()
+        text_endpoints = [
+            "какая-то бессмыслица",
+            "нероскошно",
+            "превосходность",
+        ]
+        for text in text_endpoints:
+            Item.objects.all().delete()
+            with self.subTest(
+                 f"This word must fail validation"
+                 f" - "{text}""
+                 ):
+                with self.assertRaises(ValidationError):
+
+                    self.item = Item(
+                        name="товар номер 1",
+                        category=self.category,
+                        text=text,
+                    )
+                    self.item.full_clean()
+                    self.item.save()
+                    self.item.tags.add(self.tag)
+
+                self.assertEqual(Item.objects.count(), item_count)
+
+    def test_with_needed_words(self):
+        item_count = Item.objects.count()
+        text_endpoints = [
+            "превосходно в нем все",
+            "это роскошно,превосходно",
+            "Это роскошно!",
+        ]
+        for text in text_endpoints:
+            Item.objects.all().delete()
+            with self.subTest(
+                 f"The model Item with such text must be created"
+                 f" - "{text}""
+                 ):
+
+                self.item = Item(
+                    name="тестовый товар",
+                    category=self.category,
+                    text=text,
+                )
+                self.item.full_clean()
+                self.item.save()
+                self.item.tags.add(self.tag)
+                self.assertEqual(Item.objects.count(), item_count + 1)
