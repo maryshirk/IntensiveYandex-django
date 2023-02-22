@@ -1,9 +1,9 @@
 from catalog.validators import ValidateMustContain
 
-from django.core.exceptions import ValidationError
-import django.core.validators
 from core.models import (IsPublishedBaseModel, SlugBaseModel,
                          UniqueNameBaseModel)
+
+import django.core.validators
 from django.db import models
 
 

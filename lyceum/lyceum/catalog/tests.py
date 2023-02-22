@@ -138,7 +138,7 @@ class ModelTests(TestCase):
             Item.objects.all().delete()
             with self.subTest(
                  f"This word must fail validation"
-                 f" - "{text}""
+                 f" - '{text}'"
                  ):
                 with self.assertRaises(ValidationError):
 

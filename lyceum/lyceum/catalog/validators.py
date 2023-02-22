@@ -20,7 +20,7 @@ class ValidateMustContain:
         if len(difference) == len(must_words):
             raise ValidationError(
                 f"Обязательно нужно использовать"
-                f" {", ".join(must_words)}"
+                f" {', '.join(must_words)}"
             )
 
 
