@@ -1,8 +1,8 @@
+from django.db import models
+
 from catalog.validators import ValidateMustContain
 
 from core.models import IsPublishedMixin, SlugMixin, UniqueNameMixin
-
-from django.db import models
 
 
 class Category(UniqueNameMixin, IsPublishedMixin, SlugMixin):
