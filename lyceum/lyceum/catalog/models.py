@@ -10,21 +10,11 @@ import django.core.validators
 from django.db import models
 
 
-def weight_validator(value):
-    if value > 32767:
-        raise django.core.exceptions.ValidationError(
-            "Вес должен быть меньше или равно 32767"
-        )
-
-
 class Category(UniqueNameBaseModel, IsPublishedBaseModel, SlugBaseModel):
     weight = models.PositiveSmallIntegerField(
         "вес",
         default=100,
         help_text="Максимум 32767",
-        validators=[
-            weight_validator,
-        ],
     )
 
     class Meta:

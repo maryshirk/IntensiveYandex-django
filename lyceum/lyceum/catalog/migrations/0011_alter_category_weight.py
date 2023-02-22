@@ -16,7 +16,6 @@ class Migration(migrations.Migration):
             field=models.PositiveSmallIntegerField(
                 default=100,
                 help_text='Максимум 32767',
-                validators=[catalog.models.weight_validator],
                 verbose_name='вес',
             ),
         ),
