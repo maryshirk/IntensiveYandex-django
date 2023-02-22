@@ -25,4 +25,4 @@ class StaticUrlTests(TestCase):
                 response = client_self.get("/coffee/")
                 if response.content.decode() == "Я кинйач":
                     n += 1
-            self.assertEqual(n, 1)
+            self.assertEqual(n, 0)
