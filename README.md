@@ -51,3 +51,6 @@ pip install -r requirements_test.txt
 ```
 python lyceum/manage.py runserver
 ```
+
+# ER-Diagram
+![Иллюстрация к проекту](https://github.com/maryshirk/IntensiveYandex-django/blob/main/er-diag.png)
