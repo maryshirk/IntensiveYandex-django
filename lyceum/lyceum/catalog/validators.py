@@ -19,8 +19,7 @@ class ValidateMustContain:
         difference = must_words - cleaned_text
         if len(difference) == len(must_words):
             raise ValidationError(
-                f"Обязательно нужно использовать"
-                f" {', '.join(must_words)}"
+                f"Обязательно нужно использовать" f" {', '.join(must_words)}"
             )
 
 
@@ -35,8 +34,7 @@ def validate_amazing(*args):
         difference = must_words - cleaned_text
         if len(difference) == len(must_words):
             raise ValidationError(
-                f"Обязательно нужно использовать"
-                f" {' '.join(must_words)}"
+                f"Обязательно нужно использовать" f" {' '.join(must_words)}"
             )
         return value
 

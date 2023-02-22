@@ -1,7 +1,10 @@
 from catalog.validators import ValidateMustContain
 
-from core.models import (IsPublishedBaseModel, SlugBaseModel,
-                         UniqueNameBaseModel)
+from core.models import (
+    IsPublishedBaseModel,
+    SlugBaseModel,
+    UniqueNameBaseModel,
+)
 
 import django.core.validators
 from django.db import models
@@ -41,7 +44,10 @@ class Tag(UniqueNameBaseModel, IsPublishedBaseModel, SlugBaseModel):
         return self.name[:15]
 
 
-class Item(UniqueNameBaseModel, IsPublishedBaseModel,):
+class Item(
+    UniqueNameBaseModel,
+    IsPublishedBaseModel,
+):
     text = models.TextField(
         "описание",
         help_text="Описание должно содержать слова 'роскошно' и 'превосходно'",

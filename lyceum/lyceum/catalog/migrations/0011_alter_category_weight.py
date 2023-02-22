@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('catalog', '0010_auto_20230222_1756'),
     ]
@@ -14,6 +13,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='category',
             name='weight',
-            field=models.PositiveSmallIntegerField(default=100, help_text='Максимум 32767', validators=[catalog.models.weight_validator], verbose_name='вес'),
+            field=models.PositiveSmallIntegerField(
+                default=100,
+                help_text='Максимум 32767',
+                validators=[catalog.models.weight_validator],
+                verbose_name='вес',
+            ),
         ),
     ]

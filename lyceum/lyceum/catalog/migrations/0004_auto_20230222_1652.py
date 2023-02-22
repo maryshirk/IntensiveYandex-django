@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('catalog', '0003_auto_20230222_1640'),
     ]
@@ -14,31 +13,63 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='category',
             name='name',
-            field=models.CharField(help_text='Максимум 150 символов', max_length=150, unique=True, verbose_name='название'),
+            field=models.CharField(
+                help_text='Максимум 150 символов',
+                max_length=150,
+                unique=True,
+                verbose_name='название',
+            ),
         ),
         migrations.AlterField(
             model_name='category',
             name='slug',
-            field=models.SlugField(help_text='Только slug-значения, максимум 200 символов', max_length=200, unique=True, verbose_name='slug'),
+            field=models.SlugField(
+                help_text='Только slug-значения, максимум 200 символов',
+                max_length=200,
+                unique=True,
+                verbose_name='slug',
+            ),
         ),
         migrations.AlterField(
             model_name='item',
             name='category',
-            field=models.ForeignKey(default=1, help_text='Выберите категорию', on_delete=django.db.models.deletion.CASCADE, related_name='catalog_items', to='catalog.category', verbose_name='категория'),
+            field=models.ForeignKey(
+                default=1,
+                help_text='Выберите категорию',
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='catalog_items',
+                to='catalog.category',
+                verbose_name='категория',
+            ),
         ),
         migrations.AlterField(
             model_name='item',
             name='tags',
-            field=models.ManyToManyField(default=1, related_name='catalog_items', to='catalog.Tag', verbose_name='тег'),
+            field=models.ManyToManyField(
+                default=1,
+                related_name='catalog_items',
+                to='catalog.Tag',
+                verbose_name='тег',
+            ),
         ),
         migrations.AlterField(
             model_name='tag',
             name='name',
-            field=models.CharField(help_text='Максимум 150 символов', max_length=150, unique=True, verbose_name='название'),
+            field=models.CharField(
+                help_text='Максимум 150 символов',
+                max_length=150,
+                unique=True,
+                verbose_name='название',
+            ),
         ),
         migrations.AlterField(
             model_name='tag',
             name='slug',
-            field=models.SlugField(help_text='Только slug-значения, максимум 200 символов', max_length=200, unique=True, verbose_name='slug'),
+            field=models.SlugField(
+                help_text='Только slug-значения, максимум 200 символов',
+                max_length=200,
+                unique=True,
+                verbose_name='slug',
+            ),
         ),
     ]

@@ -26,5 +26,8 @@ class ItemAdmin(admin.ModelAdmin):
         "is_published",
     )
     list_editable = ("is_published", "text")
-    list_display_links = ("id", "name",)
+    list_display_links = (
+        "id",
+        "name",
+    )
     filter_horizontal = ("tags",)

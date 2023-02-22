@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('catalog', '0007_auto_20230222_1704'),
     ]
@@ -14,11 +13,47 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Максимум 150 символов', max_length=150, unique=True, verbose_name='название')),
-                ('is_published', models.BooleanField(default=True, verbose_name='опубликовано')),
-                ('slug', models.SlugField(help_text='Только slug-значения, максимум 200 символов', max_length=200, unique=True, verbose_name='slug')),
-                ('weight', models.PositiveSmallIntegerField(default=100, help_text='Максимум 32767', verbose_name='вес')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'name',
+                    models.CharField(
+                        help_text='Максимум 150 символов',
+                        max_length=150,
+                        unique=True,
+                        verbose_name='название',
+                    ),
+                ),
+                (
+                    'is_published',
+                    models.BooleanField(
+                        default=True, verbose_name='опубликовано'
+                    ),
+                ),
+                (
+                    'slug',
+                    models.SlugField(
+                        help_text='Только slug-значения, максимум 200 символов',
+                        max_length=200,
+                        unique=True,
+                        verbose_name='slug',
+                    ),
+                ),
+                (
+                    'weight',
+                    models.PositiveSmallIntegerField(
+                        default=100,
+                        help_text='Максимум 32767',
+                        verbose_name='вес',
+                    ),
+                ),
             ],
             options={
                 'verbose_name': 'категория',
@@ -28,10 +63,39 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Tag',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='Максимум 150 символов', max_length=150, unique=True, verbose_name='название')),
-                ('is_published', models.BooleanField(default=True, verbose_name='опубликовано')),
-                ('slug', models.SlugField(help_text='Только slug-значения, максимум 200 символов', max_length=200, unique=True, verbose_name='slug')),
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    ),
+                ),
+                (
+                    'name',
+                    models.CharField(
+                        help_text='Максимум 150 символов',
+                        max_length=150,
+                        unique=True,
+                        verbose_name='название',
+                    ),
+                ),
+                (
+                    'is_published',
+                    models.BooleanField(
+                        default=True, verbose_name='опубликовано'
+                    ),
+                ),
+                (
+                    'slug',
+                    models.SlugField(
+                        help_text='Только slug-значения, максимум 200 символов',
+                        max_length=200,
+                        unique=True,
+                        verbose_name='slug',
+                    ),
+                ),
             ],
             options={
                 'verbose_name': 'тег',
@@ -41,11 +105,23 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='item',
             name='category',
-            field=models.ForeignKey(default=1, help_text='Выберите категорию', on_delete=django.db.models.deletion.CASCADE, related_name='catalog_items', to='catalog.category', verbose_name='категория'),
+            field=models.ForeignKey(
+                default=1,
+                help_text='Выберите категорию',
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='catalog_items',
+                to='catalog.category',
+                verbose_name='категория',
+            ),
         ),
         migrations.AddField(
             model_name='item',
             name='tags',
-            field=models.ManyToManyField(default=1, related_name='catalog_items', to='catalog.Tag', verbose_name='тег'),
+            field=models.ManyToManyField(
+                default=1,
+                related_name='catalog_items',
+                to='catalog.Tag',
+                verbose_name='тег',
+            ),
         ),
     ]

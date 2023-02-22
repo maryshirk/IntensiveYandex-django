@@ -138,11 +138,9 @@ class ModelTests(TestCase):
         for text in text_endpoints:
             Item.objects.all().delete()
             with self.subTest(
-                 f"This word must fail validation"
-                 f" - '{text}'"
-                 ):
+                f"This word must fail validation" f" - '{text}'"
+            ):
                 with self.assertRaises(ValidationError):
-
                     self.item = Item(
                         name="товар номер 1",
                         category=self.category,
@@ -164,10 +162,8 @@ class ModelTests(TestCase):
         for text in text_endpoints:
             Item.objects.all().delete()
             with self.subTest(
-                 f"The model Item with such text must be created"
-                 f" - '{text}'"
-                 ):
-
+                f"The model Item with such text must be created" f" - '{text}'"
+            ):
                 self.item = Item(
                     name="тестовый товар",
                     category=self.category,

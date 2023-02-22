@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('catalog', '0011_alter_category_weight'),
     ]
@@ -13,6 +12,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='item',
             name='name',
-            field=models.CharField(help_text='Максимум 150 символов', max_length=150, unique=True, verbose_name='название'),
+            field=models.CharField(
+                help_text='Максимум 150 символов',
+                max_length=150,
+                unique=True,
+                verbose_name='название',
+            ),
         ),
     ]

@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('catalog', '0008_auto_20230222_1707'),
     ]
@@ -14,11 +13,19 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='item',
             name='category',
-            field=models.ForeignKey(default=1, help_text='Выберите категорию', on_delete=django.db.models.deletion.CASCADE, to='catalog.category', verbose_name='категория'),
+            field=models.ForeignKey(
+                default=1,
+                help_text='Выберите категорию',
+                on_delete=django.db.models.deletion.CASCADE,
+                to='catalog.category',
+                verbose_name='категория',
+            ),
         ),
         migrations.AlterField(
             model_name='item',
             name='tags',
-            field=models.ManyToManyField(default=1, to='catalog.Tag', verbose_name='тег'),
+            field=models.ManyToManyField(
+                default=1, to='catalog.Tag', verbose_name='тег'
+            ),
         ),
     ]
