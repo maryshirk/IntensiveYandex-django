@@ -33,7 +33,6 @@ jobs:
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --per-file-ignores=./lyceum/lyceum/catalog/migrations/ --statistics
         flake8 . --count --show-source --statistics
     - uses: psf/black@stable
       with:
