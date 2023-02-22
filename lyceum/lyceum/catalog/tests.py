@@ -164,7 +164,7 @@ class ModelTests(TestCase):
             Item.objects.all().delete()
             with self.subTest(
                  f"The model Item with such text must be created"
-                 f" - "{text}""
+                 f" - '{text}'"
                  ):
 
                 self.item = Item(
