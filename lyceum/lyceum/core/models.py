@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class IsPublishedBaseModel(models.Model):
+class IsPublishedMixin(models.Model):
     is_published = models.BooleanField(
         "опубликовано",
         default=True,
@@ -14,7 +14,7 @@ class IsPublishedBaseModel(models.Model):
         return self.name
 
 
-class SlugBaseModel(models.Model):
+class SlugMixin(models.Model):
     slug = models.SlugField(
         "slug",
         max_length=200,
@@ -26,7 +26,7 @@ class SlugBaseModel(models.Model):
         abstract = True
 
 
-class UniqueNameBaseModel(models.Model):
+class UniqueNameMixin(models.Model):
     name = models.CharField(
         "название",
         max_length=150,

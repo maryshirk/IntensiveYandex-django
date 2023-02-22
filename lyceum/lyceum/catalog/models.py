@@ -1,15 +1,15 @@
 from catalog.validators import ValidateMustContain
 
 from core.models import (
-    IsPublishedBaseModel,
-    SlugBaseModel,
-    UniqueNameBaseModel,
+    IsPublishedMixin,
+    SlugMixin,
+    UniqueNameMixin
 )
 
 from django.db import models
 
 
-class Category(UniqueNameBaseModel, IsPublishedBaseModel, SlugBaseModel):
+class Category(UniqueNameMixin, IsPublishedMixin, SlugMixin):
     weight = models.PositiveSmallIntegerField(
         "вес",
         default=100,
@@ -24,7 +24,7 @@ class Category(UniqueNameBaseModel, IsPublishedBaseModel, SlugBaseModel):
         return self.name[:15]
 
 
-class Tag(UniqueNameBaseModel, IsPublishedBaseModel, SlugBaseModel):
+class Tag(UniqueNameMixin, IsPublishedMixin, SlugMixin):
     class Meta:
         verbose_name = "тег"
         verbose_name_plural = "теги"
@@ -34,8 +34,8 @@ class Tag(UniqueNameBaseModel, IsPublishedBaseModel, SlugBaseModel):
 
 
 class Item(
-    UniqueNameBaseModel,
-    IsPublishedBaseModel,
+    UniqueNameMixin,
+    IsPublishedMixin,
 ):
     text = models.TextField(
         "описание",
