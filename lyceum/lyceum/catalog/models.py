@@ -1,7 +1,8 @@
 from django.db import models
 
-from catalog.validators import ValidateMustContain
 from ckeditor.fields import RichTextField
+
+from catalog.validators import ValidateMustContain
 
 from core.models import (
     ImageBaseMixin,
