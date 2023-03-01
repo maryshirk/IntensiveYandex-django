@@ -3,7 +3,10 @@ from django.db import models
 from catalog.validators import ValidateMustContain
 
 from core.models import (
-    ImageBaseMixin, IsPublishedMixin, SlugMixin, UniqueNameMixin
+    ImageBaseMixin,
+    IsPublishedMixin,
+    SlugMixin,
+    UniqueNameMixin,
 )
 
 
