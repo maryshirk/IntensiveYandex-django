@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div>
+  <div class="container-xxl bd-gutter">
+    <div class="col-md-8 mx-auto text-center mt-3">
+      <h1 class="mb-3 fw-semibold">Встречай нашу компанию</h1>
+      <p class="lead mb-4">
+        длинное описание
+      </p>
+    </div>
+  </div>
+
+  <div class="row g-3 pr-5 pl-5 mb-5">
+    <div class="col-lg-6 py-lg-4 pe-lg-5 g-md-5 justify-content-center">
+      <h2 class="pb-3 mb-4 font-italic border-bottom">Немного о проекте</h2>
+      <h3 class="blog-post-title">История нашей компании</h3>
+      <p class="blog-post-meta">Февраль, 2023</p>
+      <img
+          src="{% static 'img/birthday.jfif' %}"
+          height="300"
+          alt="Funny cat :("
+          class="d-block mx-auto mb-3"
+          >
+      <hr>
+      <p>
+        Кот сначала удивился тому, что у мыши не было хвоста, но потом понял, что это беспроводная мышь
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock%}
+

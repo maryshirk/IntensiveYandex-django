@@ -2,7 +2,12 @@ from django.db import models
 
 from catalog.validators import ValidateMustContain
 
-from core.models import IsPublishedMixin, SlugMixin, UniqueNameMixin
+from core.models import (
+    IsPublishedMixin,
+    SlugMixin,
+    UniqueNameMixin,
+    ImageBaseMixin,
+)
 
 
 class Category(UniqueNameMixin, IsPublishedMixin, SlugMixin):
@@ -61,3 +66,28 @@ class Item(
 
     def __str__(self):
         return self.name[:15]
+
+
+class MainImage(ImageBaseMixin):
+    item = models.OneToOneField(
+        'Item',
+        verbose_name='товар',
+        on_delete=models.CASCADE,
+        null=True,
+    )
+
+    class Meta:
+        verbose_name = 'главное изображение'
+        verbose_name_plural = 'главные изображения'
+
+
+class Gallery(ImageBaseMixin):
+    item = models.ForeignKey(
+        'Item',
+        verbose_name='товар',
+        on_delete=models.CASCADE,
+    )
+
+    class Meta:
+        verbose_name = 'Фото товара'
+        verbose_name_plural = 'Фотогалерея товара'

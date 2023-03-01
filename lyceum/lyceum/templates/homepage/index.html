@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-xxl bd-gutter">
+  <div class="col-md-8 mx-auto text-center mt-3">
+    <h1 class="mb-3 fw-semibold">Покупай с удовольствием</h1>
+    <p class="lead mb-4">
+      Котики не подопытные
+    </p>
+    <img
+        src="{% static 'img/lover.jpeg' %}"
+        height="300"
+        alt="Good cat :("
+        class="d-block mx-auto mb-3"
+        >
+  </div>
+</div>
+{% for item in items%}
+    {% include 'catalog/includes/card.html' %}
+{% endfor %}
+{% endblock %}
