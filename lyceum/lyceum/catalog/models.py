@@ -1,6 +1,7 @@
 from django.db import models
 
 from catalog.validators import ValidateMustContain
+from ckeditor.fields import RichTextField
 
 from core.models import (
     ImageBaseMixin,
@@ -38,7 +39,7 @@ class Item(
     UniqueNameMixin,
     IsPublishedMixin,
 ):
-    text = models.TextField(
+    text = RichTextField(
         "описание",
         help_text="Описание должно содержать слова 'роскошно' и 'превосходно'",
         validators=[

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "sorl.thumbnail",
     "django_cleanup.apps.CleanupConfig",
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -152,3 +153,38 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': [
+            [
+                'Undo',
+                'Redo',
+                '-',
+                'Bold',
+                'Italic',
+                'Underline',
+                '-',
+                'Maximize',
+            ],
+            [
+                'JustifyLeft',
+                'JustifyCenter',
+                'JustifyRight',
+                'JustifyBlock',
+                '-',
+                'Font',
+                'FontSize',
+                'TextColor',
+                '-',
+                'Outdent',
+                'Indent',
+            ],
+        ],
+        'height': 100,
+        'width': '100%',
+        'toolbarCanCollapse': False,
+        'forcePasteAsPlainText': True,
+    }
+}
