@@ -1,6 +1,9 @@
 from django.db import models
+
 from django.utils.safestring import mark_safe
+
 from django_cleanup.signals import cleanup_pre_delete
+
 from sorl.thumbnail import delete, get_thumbnail
 
 
