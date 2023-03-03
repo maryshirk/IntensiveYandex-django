@@ -1,6 +1,9 @@
 from django.core.management import BaseCommand, call_command
-from dotenv import load_dotenv
+
 import os
+
+from dotenv import load_dotenv
+
 
 load_dotenv()
 
@@ -27,7 +30,7 @@ class Command(BaseCommand):
 
     def check_migrations(self):
         print("checking some migrations")
-        for address, dirs, files in os.walk("lyceum\catalog"):
+        for address, dirs, files in os.walk("lyceum/catalog"):
             if dirs:
                 if os.path.basename(address) == "migrations":
                     if os.listdir(address):
