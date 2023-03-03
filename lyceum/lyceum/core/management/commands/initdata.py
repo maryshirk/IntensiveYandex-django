@@ -1,6 +1,6 @@
-from django.core.management import BaseCommand, call_command
-
 import os
+
+from django.core.management import BaseCommand, call_command
 
 from dotenv import load_dotenv
 
