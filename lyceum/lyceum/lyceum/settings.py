@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "homepage.apps.HomepageConfig",
     "about.apps.AboutConfig",
     "coffee.apps.CoffeeConfig",
+    "core.apps.CoreConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
