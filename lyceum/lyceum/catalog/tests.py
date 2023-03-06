@@ -181,3 +181,66 @@ class TaskPagesTests(TestCase):
     def test_catalog_shown_correct_context_item_detail(self):
         response = Client().get(reverse('catalog:item_detail', args=[1]))
         self.assertIn('item', response.context)
+
+
+class ContextTests(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+
+        cls.published_category = Category.objects.create(
+            is_published=True,
+            name="Тестовая опубликованная категория",
+            slug="published_category",
+            weight=100,
+        )
+
+        cls.unpublished_category = Category.objects.create(
+            is_published=False,
+            name="Тестовая неопубликованная категория",
+            slug="unpublished_category",
+            weight=100,
+        )
+
+        cls.published_tag = Tag.objects.create(
+            is_published=True,
+            name="Тестовый опубликованный тэг",
+            slug="published_tag",
+        )
+
+        cls.unpublished_tag = Tag.objects.create(
+            is_published=False,
+            name="Тестовый неопубликованный тэг",
+            slug="unpublished_tag",
+        )
+
+        cls.unpublished_item = Item(
+            name="Непубликованный товар",
+            category=cls.published_category,
+            text="превосходно",
+            is_published=False,
+        )
+
+        cls.published_item = Item(
+            name="Опубликованный товар",
+            category=cls.published_category,
+            text="превосходно",
+        )
+
+        cls.published_category.save()
+        cls.unpublished_category.save()
+
+        cls.published_tag.save()
+        cls.unpublished_tag.save()
+
+        cls.published_item.clean()
+        cls.published_item.save()
+        cls.unpublished_item.clean()
+        cls.unpublished_item.save()
+
+        cls.published_item.tags.add(cls.published_tag.pk)
+        cls.published_item.tags.add(cls.unpublished_tag.pk)
+
+        def test_homepage_show_correct_context(self):
+            response = Client().get(reverse('homepage:home'))
+            self.assertIn('items', response.context)
