@@ -35,9 +35,10 @@ class ItemAdmin(admin.ModelAdmin):
         catalog.models.Item.name.field.name,
         "text",
         "is_published",
+        "is_on_main",
         'small_image_tmb',
     )
-    list_editable = ("is_published", "text")
+    list_editable = ("is_published", "text", "is_on_main")
     list_display_links = (
         "id",
         "name",

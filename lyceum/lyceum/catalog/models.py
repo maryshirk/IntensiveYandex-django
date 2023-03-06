@@ -3,6 +3,7 @@ from ckeditor.fields import RichTextField
 from django.db import models
 
 from catalog.validators import ValidateMustContain
+from catalog.managers import ItemManager, TagManager
 
 from core.models import (
     ImageBaseMixin,
@@ -28,6 +29,8 @@ class Category(UniqueNameMixin, IsPublishedMixin, SlugMixin):
 
 
 class Tag(UniqueNameMixin, IsPublishedMixin, SlugMixin):
+    objects = TagManager()
+
     class Meta:
         verbose_name = "тег"
         verbose_name_plural = "теги"
@@ -40,6 +43,8 @@ class Item(
     UniqueNameMixin,
     IsPublishedMixin,
 ):
+    objects = ItemManager()
+
     text = RichTextField(
         "описание",
         help_text="Описание должно содержать слова 'роскошно' и 'превосходно'",
@@ -60,6 +65,11 @@ class Item(
         "Tag",
         verbose_name="тег",
         default=[0],
+    )
+
+    is_on_main = models.BooleanField(
+        'на главной',
+        default=False,
     )
 
     class Meta:

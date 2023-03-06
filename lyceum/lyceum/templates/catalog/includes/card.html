@@ -1,62 +1,54 @@
-{% load static %}
-<div class="row row-cols-1 row-cols-md-4 g-4">
-    <div class="col">
-      <div class="card">
-        <img
-        src="{% static 'img/raider.jfif' %}"
-        height=300
-        alt="Sad cat :("
-        class="card-img-top"
-        <div class="card-deck">
-        <div class="card-body">
-          <h5 class="card-title">Рейдер</h5>
-          <p class="card-text">Бла бла бла</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img
-        src="{% static 'img/iosif.jfif' %}"
-        height=300
-        alt="Sad cat :("
-        class="card-img-top"
-        <div class="card-deck">
-        <div class="card-body">
-          <h5 class="card-title">Иосиф</h5>
-          <p class="card-text">Бла бла бла</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img
-        src="{% static 'img/djobs.jfif' %}"
-        height=300
-        alt="Sad cat :("
-        class="card-img-top"
-        <div class="card-deck">
-        <div class="card-body">
-          <h5 class="card-title">Джобс</h5>
-          <p class="card-text">Бла бла бла</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img
-        src="{% static 'img/brussi.jfif' %}"
-        height=300
-        alt="Sad cat :("
-        class="card-img-top"
-        <div class="card-deck">
-        <div class="card-body">
-          <h5 class="card-title">Брюсси</h5>
-          <p class="card-text">Бла бла бла</p>
-        </div>
-      </div>
-    </div>
+<div class="container mt-3">
+  {% with request.resolver_match.view_name as view_name %}
+      {% if view_name == 'catalog:item_list' %}
+          {% ifchanged %}
+                <br>
+                <h4>Категория: {{ item.category.name }}</h4>
+          {% endifchanged %}
+      {% else %}
+      {% endif %}
+  {% endwith %}
+
+<div class="card mb-3">
+    {% with request.resolver_match.view_name as view_name %}
+        {% if view_name != 'catalog:item_list' %}
+            <div class="card-header">Категория: {{ item.category.name }}</div>
+        {% endif %}
+    {% endwith %}
+
+  <div class="card-body">
+    <h5 class="card-title">{{ item.name }}</h5>
+        {% with request.resolver_match.view_name as view_name %}
+            {% if view_name == 'catalog:item_detail' %}        
+                {% load thumbnail %}
+                    {% thumbnail item.mainimage.image "300x300" crop="center" as im %}
+                        <img src="{{ im.url }}"
+                            width="{{ im.width }}"
+                            height="{{ im.height }}"
+                            class="rounded float-end"
+                            alt="Картинка товара">
+                    {% endthumbnail %}
+                {{ item.text|safe}}
+                     <div>
+                        <a href="{% url 'catalog:item_list' %}">Обратно к списку товаров</a>
+                     </div>
+            {% else %}
+                {{ item.text|safe|truncatewords:10 }}
+                <br>
+                <p><a href="{% url 'catalog:item_detail' item.id %}">Перейти к товару</a></p>
+            {% endif %}
+        {% endwith %}
   </div>
-
-
-
+  <div class="card-footer text-muted">
+    Теги:
+    {% for tag in item.tags.all %}
+        {{ tag.name }}
+        {% if not forloop.last %}
+            ,
+        {% endif %}
+    {% empty %}
+        <p>Тегов пока нет</p>
+    {% endfor %}
+  </div>
+</div>
+</div>

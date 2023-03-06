@@ -9,5 +9,17 @@
 {% block content %}
 <h2 class="text-center">Список товаров</h2>
 <hr>
+{% for item in items%}
     {% include 'catalog/includes/card.html' %}
+    {% empty %}
+        <div class="col-md-8 mx-auto text-center mt-3">
+            <p class="lead mb-4">Упс, товаров нет. Сообщите администратору </p>
+            <img
+                src="{% static 'img/sad_cat.png' %}"
+                height="165"
+                alt="Sad cat"
+                class="d-block mx-auto mb-3"
+                >
+        </div>
+{% endfor %}
 {% endblock%}
