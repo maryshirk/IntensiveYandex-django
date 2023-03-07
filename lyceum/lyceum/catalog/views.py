@@ -5,7 +5,6 @@ from django.shortcuts import render
 import catalog.models
 
 
-# Create your views here.
 def item_list(request):
     template = "catalog/item_list.html"
     items = django.shortcuts.get_list_or_404(
