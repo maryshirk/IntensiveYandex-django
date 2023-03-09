@@ -159,6 +159,19 @@ class TaskPagesTests(TestCase):
             name='Test item 1',
             text='превосходно',
             category=cls.category,
+            is_published=True,
+        )
+        Item.objects.create(
+            name='Test item 2',
+            text='роскошно',
+            category=cls.category,
+            is_published=False,
+        )
+        Item.objects.create(
+            name='Test item 3',
+            text='превосходно',
+            category=cls.category,
+            is_published=True,
         )
 
     def test_catalog_shown_correct_context_item_list(self):
@@ -168,6 +181,10 @@ class TaskPagesTests(TestCase):
     def test_catalog_shown_correct_context_item_detail(self):
         response = Client().get(reverse('catalog:item_detail', args=[1]))
         self.assertIn('item', response.context)
+
+    def test_catalog_count_publisheditems(self):
+        response = Client().get(reverse('catalog:item_list'))
+        self.assertEqual(len(response.context['items']), 2)
 
 
 class ContextTests(TestCase):
@@ -231,3 +248,18 @@ class ContextTests(TestCase):
         def test_homepage_show_correct_context(self):
             response = Client().get(reverse('homepage:home'))
             self.assertIn('items', response.context)
+
+        def test_catalog_queryset(self):
+            response = Client().get(reverse('catalog:item_list'))
+            self.assertIn(
+                self.published_item,
+                response.context["items"],
+            )
+            self.assertNotIn(
+                self.unpublished_item,
+                response.context["items"],
+            )
+
+        def test_count_publisheditems(self):
+            response = Client().get(reverse('catalog:item_list'))
+            self.assertEqual(len(response.context['items']), 1)
