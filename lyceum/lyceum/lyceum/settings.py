@@ -32,6 +32,8 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(", ")
 
 REVERSE_FLAG = os.environ.get("REVERSE_FLAG") == "True"
 
+ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL', 'admin@example.com')
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     "about.apps.AboutConfig",
     "coffee.apps.CoffeeConfig",
     "core.apps.CoreConfig",
+    'feedback.apps.FeedbackConfig',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -49,6 +52,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "sorl.thumbnail",
     "django_cleanup.apps.CleanupConfig",
+    'widget_tweaks',
     'ckeditor',
 ]
 
@@ -150,6 +154,8 @@ STATIC_ROOT = BASE_DIR / "static"
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
 
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / 'send_mail'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

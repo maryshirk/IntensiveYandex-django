@@ -24,6 +24,7 @@ urlpatterns = [
     path("catalog/", include("catalog.urls")),
     path("about/", include("about.urls")),
     path("coffee/", include("coffee.urls")),
+    path('feedback/', include('feedback.urls', namespace='feedback')),
     path("admin/", admin.site.urls),
 ]
 

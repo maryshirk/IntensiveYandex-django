@@ -31,6 +31,12 @@
             class="nav-link px-2 {% if view_name == 'about:description' %} text-secondary disabled {% else %} text-white {% endif %}"
             >О проекте</a>
         </li>
+        <li>
+          <a
+            href="{% url 'feedback:feedback' %}"
+            class="nav-link px-2 {% if view_name == 'feedback:feedback' %} text-secondary disabled {% else %} text-white {% endif %}"
+            >Обратная связь</a>
+        </li>
         
         {% endwith %}
       </ul>
