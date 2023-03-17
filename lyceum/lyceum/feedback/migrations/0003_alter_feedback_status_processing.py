@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('feedback', '0002_feedback_status_processing'),
     ]
@@ -13,6 +12,14 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='feedback',
             name='status_processing',
-            field=models.TextField(choices=[('received', 'получено'), ('in processing', 'в обработке'), ('ancwer is given', 'ответ дан')], default='получено', verbose_name='статус обработки'),
+            field=models.TextField(
+                choices=[
+                    ('received', 'получено'),
+                    ('in processing', 'в обработке'),
+                    ('ancwer is given', 'ответ дан'),
+                ],
+                default='получено',
+                verbose_name='статус обработки',
+            ),
         ),
     ]
