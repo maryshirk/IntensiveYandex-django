@@ -21,9 +21,9 @@ class Feedback(models.Model):
     status_processing = models.TextField(
         'статус обработки',
         choices=[
-            ('получено', 'получено'),
-            ('в обработке', 'в обработке'),
-            ('ответ дан', 'ответ дан'),
+            ('received', 'получено'),
+            ('in processing', 'в обработке'),
+            ('ancwer is given', 'ответ дан'),
         ],
         default='получено',
     )
@@ -41,6 +41,6 @@ class Feedback(models.Model):
         return self.short_text()
 
     def short_text(self):
-        return self.text if len(self.text) < 20 else f'{self.text[:20]}...'
+        return self.text[:20]
 
     short_text.short_description = 'описание фидбэка'
