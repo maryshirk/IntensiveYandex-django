@@ -59,7 +59,7 @@ class FormTests(TestCase):
             'mail': '1@example.com',
         }
 
-        response = Client().post(
+        Client().post(
             reverse('feedback:feedback'),
             data=form_data,
             follow=True,
@@ -97,7 +97,7 @@ class FormTests(TestCase):
             'mail': '1@example.com',
         }
 
-        response = Client().post(
+        Client().post(
             reverse('feedback:feedback'),
             data=form_data,
             follow=True,
